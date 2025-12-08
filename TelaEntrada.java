@@ -69,3 +69,29 @@ public class TelaEntrada extends JFrame implements ActionListener {
         setVisible(true);
     }
 // ... (restante da classe)
+// ... (Início do método calcularResultados, dentro do bloco try)
+            // ... (Coleta e validação de Jeyferson) ...
+
+            // --- Fator anual (Conversão de Período) --- (Miguel)
+            double fatorAnual = switch (periodoSelecionado) {
+                case "Diário" -> 365.0;
+                case "Semanal" -> 52.0;
+                case "Mensal" -> 12.0;
+                case "Anual" -> 1.0;
+                default -> 1.0;
+            };
+
+            // --- Cálculos --- (Miguel)
+            // 3.a: Total de Tampinhas Anuais
+            int totalTampinhasPeriodo = garrafas2L + garrafas1L + garrafasAgua;
+            double totalTampinhasAno = totalTampinhasPeriodo * fatorAnual;
+
+            // 3.b: Conversão para KG
+            double totalKgAno = totalTampinhasAno / TAMPINHAS_POR_KG;
+            
+            // 3.c: Ganho Anual (R$)
+            double ganhoAnual = totalKgAno * VALOR_POR_KG;
+
+            // ... (A lógica de Projeção de Rayk continua aqui) ...
+
+// ... (O bloco try-catch de Jeyferson se fecha ao final do método)
