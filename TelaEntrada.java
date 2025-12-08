@@ -95,3 +95,48 @@ public class TelaEntrada extends JFrame implements ActionListener {
             // ... (A lógica de Projeção de Rayk continua aqui) ...
 
 // ... (O bloco try-catch de Jeyferson se fecha ao final do método)
+// ... (Continuação da classe TelaEntrada)
+
+    // Conexão do Botão (Jeyferson)
+    @Override
+    public void actionPerformed(ActionEvent evento) {
+        if (evento.getSource() == botaoCalcular) {
+            calcularResultados();
+        }
+    }
+
+    private void calcularResultados() {
+        try {
+            // --- Coleta de Dados (Jeyferson inicia) ---
+            int garrafas2L = Integer.parseInt(campoGarrafas2L.getText());
+            int garrafas1L = Integer.parseInt(campoGarrafas1L.getText());
+            int garrafasAgua = Integer.parseInt(campoGarrafasAgua.getText());
+            int idadeUsuario = Integer.parseInt(campoIdade.getText());
+            String periodoSelecionado = (String) comboPeriodo.getSelectedItem();
+            
+            // Validação de não-negatividade (Jeyferson)
+            if (garrafas2L < 0 || garrafas1L < 0 || garrafasAgua < 0 || idadeUsuario < 0) {
+                throw new IllegalArgumentException("Todos os valores devem ser positivos.");
+            }
+            // ... (Lógica de Miguel e Rayk continua aqui)
+
+            // ... (Chamada para TelaSaida de Rayk)
+
+        // --- Tratamento de Exceções (Jeyferson) ---
+        } catch (NumberFormatException erro) {
+            // Tratamento para entradas não numéricas
+            JOptionPane.showMessageDialog(this, 
+                "Digite apenas números válidos.", 
+                "Erro", 
+                JOptionPane.ERROR_MESSAGE
+            );
+        } catch (IllegalArgumentException erro) {
+            // Tratamento para valores negativos (captura o erro de validação acima)
+            JOptionPane.showMessageDialog(this, 
+                erro.getMessage(), 
+                "Erro", 
+                JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
+} // Fim da classe TelaEntrada
